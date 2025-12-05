@@ -1,11 +1,380 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>لوحة التحكم</title>
+<link rel="stylesheet" href="/assests/style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
   
+</style>
+</head>
+
+<body>
+
+
+<div class="topbar">
+    <img src="/image/f9f831a3dca6f5fbcb89a69383cd9de01ac1e52b (1).png" class="logo" >
+
+    <div class="center-section">
+        <input type="text" placeholder="ابحث..." class="search-box">
+    </div>
+
+    <div class="icons">
+       <label for="showNotifications" class="icon"><i class="fa-regular fa-bell"></i></label>
+
+<input type="checkbox" id="showNotifications" hidden>
+
+<div class="notifications-box">
+    <h3>الإشعارات</h3>
+
+    <div class="item">تم شحن الرصيد– منذ يومين</div>
+    <div class="item">تم شحن الرصيد– منذ ٣ أيام</div>
+    <div class="item">تم شحن الرصيد– منذ ٣ أيام</div>
+    <div class="item">تم شحن الرصيد– منذ ٣ أيام</div>
+
+    <a class="more">عرض الكل</a>
+</div>
+
+        <i class="icon">
+              <a href="متجر الثيمات.html" class="iconss ">
+        <i class="fa-solid fa-gamepad"></i>
+    </a>
+        </i>
+        <i class="icon">  <a href="app.html" class="iconss ac">
+        <i class="fa-solid fa-border-all"></i>
+    </a></i>
+    </a></i>
+      <i class="icon">  <i class="fa-regular fa-moon"></i></i>
+        <i class="icon dark-toggle"></i>
+    </div>
+    <div class="store-wrapper">
+  <div class="store-select" id="storeBtn">
+    <img src="/image/121df8e4ff69af84b6cdf0af74303de3d79c0e0c.jpg">
+    <span class="flo">متجر زهور</span>
+    <span class="arrow">▼</span>
+</div>
+
+
+ <div id="dropdownMenu" class="dropdown-menu">
+    <div class="profile-section">
+        <img src="/image/121df8e4ff69af84b6cdf0af74303de3d79c0e0c.jpg" class="profile-img" />
+        <div class="profile-info">
+            <h3>متجر زهور</h3>
+            <p>الباقة المجانية</p>
+        </div>
+    </div>
+
+    <div class="buttons">
+        <button class="visit-btn">زيارة المتجر</button>
+        <button class="settings-btn">الإعدادات ⚙️</button>
+    </div>
+
+    <ul class="menu-list">
+        <li>
+        <a href="باقه المتجر.html"> <i class="fa-solid fa-gem"></i>باقه المنتجات  </li>
+            </a>   <li>
+    <a href="المحفظه.html" class="menu-link">
+        <i class="fa-solid fa-wallet"></i> المحفظة والفواتير
+    </a>
+</li>
+        <li class="logout"><i class="fa-solid fa-right-from-bracket"></i> تسجيل الخروج</li>
+    </ul>
+</div>
+</div>
+</div>
+
+<div class="a">
+
+  <main class="mai">
+
+    <header>
+      <div>
+        <h2 style="margin:0">حياك الله في متجرك</h2>
+        <p style="color:var(--muted);margin:0;font-size:14px">باشر بمتابعة بياناتك…</p>
+      </div>
+    </header>
+
+    <!-- TOP CARDS -->
+    <div class="cards">
+      <div class="card"><h3>الطلبات</h3><div class="stat">542 <span style="color:var(--success)">+10%</span></div></div>
+      <div class="card"><h3>الزوار</h3><div class="stat">542 <span style="color:var(--danger)">-10%</span></div></div>
+      <div class="card"><h3>المبيعات</h3><div class="stat">542 <span style="color:var(--success)">+25%</span></div></div>
+    </div>
+
+    <!-- GRID -->
+    <div class="layout">
+      <div>
+        <!-- WEEKLY SALES -->
+        <div class="card" style="margin-top:20px">
+          <button class="btn">آخر 7 أيام</button>
+          <h3>مبيعات الأسبوع</h3>
+          <div class="value">500 جنيه</div>
+          <canvas id="weeklyChart"></canvas>
+        </div>
+      </div>
+
+      <!-- MONTHLY -->
+      <div class="card">
+        <div class="card-header flex">
+            <div>
+                <button class="btn small">7 أيام</button>
+                <button class="btn small active">شهر</button>
+                <button class="btn small">6 شهور</button>
+            </div>
+            <div>
+                <h3>إجمالي الربح</h3>
+                <div class="value">4787 جنيه</div>
+            </div>
+        </div>
+        <canvas id="monthlyChart"></canvas>
+      </div>
+    </div>
+
+    <!-- LAST ORDERS -->
+    <div class="box" style="margin-top:20px">
+ 
+
+    <h2>أحدث الطلبات</h2>
+    <p class="sub">تابع طلباتك بإنتظام</p>
+
+    <div class="filters">     
+  <div class="filter-wrapper">
+    <button class="btn">كل الأقسام ▼</button>
+
+    <div class="filter-menu">
+        <ul>
+            <li>كل الاقسام</li>
+            <li>الاكسسوارات</li>
+            <li>ملابس</li>
+            <li>اواني</li>
+        </ul>
+    </div>
+</div>
+
+        <button class="btn">الأحدث ⬍</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>رقم الطلب</th>
+                <th>اسم المنتج</th>
+                  <th>العميل</th>
+                   <th>التاريخ</th>
+                    <th>الدفع</th>
+                       <th>المبلغ</th> 
+                         <th>حالة الدفع</th>
+                         <th>الحالة</th>
+                         <th>إجراء</th>
+                <th><input type="checkbox"></th>
+            </tr>
+        </thead>
+
+        <tbody>
+<!-- Row 1 (مرتّب) -->
+        <tr>
+            <td>#10248</td>
+            
+            <td>ساعة ذكية برو إكس<div style="display:flex; align-items:center; gap:10px;">
+                    <img src="/image/0e03fd966e9c568002514dc7b22f9bf224852728.jpg" style="width:45px; border-radius:6px;">
+                    <div> <br><small>منتج 2</small></td>
+            <td>أحمد خليل</td>
+            <td>2026</td>
+            <td>ماستركارد</td>
+            <td>299.00 د.إ</td>
+            <td><span class="status paid">تم الدفع ✔</span></td>
+            <td><span class="status done">مكتمل ✔</span></td>
+            <td class="actions">⋯</td>
+            <td><input type="checkbox"></td>
+        </tr>
+
+        <!-- Row 2 (مرتّب) -->
+        <tr>
+            <td>#10246</td>
+            <td> <div style="display:flex; align-items:center; gap:10px;">
+                    <img src="/image/4e98c809b7f902889f949e2efbc3325865c5d90c (1).jpg" style="width:45px; border-radius:6px;">
+                    <div>كرسي مكتب فاخر</td>
+            <td>عرفات حسين</td>
+            <td>2026</td>
+            <td>فيزا</td>
+            <td>299.00 د.إ</td>
+            <td><span class="status pending">معلق</span></td>
+            <td><span class="status pending">قيد التنفيذ 🔄</span></td>
+            <td class="actions">⋯</td>
+            <td><input type="checkbox"></td>
+        </tr>
+
+        <!-- Row 3 (مرتّب) -->
+        <tr>
+            <td>#10247</td>
+            <td>حامل لابتوب مريح <div style="display:flex; align-items:center; gap:10px;">
+                    <img src="/image/b9601670da5974ed90fd6da49f31cb41c907c83d.jpg" style="width:45px; border-radius:6px;">
+                    <div></td>
+            <td>نصرت جهان</td>
+            <td>2026</td>
+            <td>باي بال</td>
+            <td>299.00 د.إ</td>
+            <td><span class="status paid">تم الدفع ✔</span></td>
+            <td><span class="status done">مكتمل ✔</span></td>
+            <td class="actions">⋯</td>
+            <td><input type="checkbox"></td>
+        </tr>
+
+        <!-- Row 4 (مرتّب) -->
+        <tr>
+            <td>#10245</td>
+            <td>سماعات أذن لاسلكية ماكس  <div style="display:flex; align-items:center; gap:10px;">
+                    <img src="/image/af0f6745c0c95e60ccf1a2e0a3917b7687cd0e5b.jpg" style="width:45px; border-radius:6px;">
+                    <div><br><small>منتج 2</small></td>
+            <td>تانيا أكثر</td>
+            <td>2026</td>
+            <td>ماستركارد</td>
+            <td>299.00 د.إ</td>
+            <td><span class="status notpaid">غير مدفوع ✖</span></td>
+            <td><span class="status failed">ملغي ✖</span></td>
+            <td class="actions">⋯</td>
+            <td><input type="checkbox"></td>
+        </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+<div id="rowMenu" class="row-menu">
+    <ul>
+        <li>تفاصيل الطلب</li>
+        <li>إلغاء الطلب</li>
+        <li>تحميل الفاتورة</li>
+        <li class="del">حذف الطلب</li>
+    </ul>
+</div>
+
+  </main>
+
+   <input type="checkbox" id="menuToggle" hidden>
+<label for="menuToggle" class="menu-btn">☰</label>
+<aside class="sidebar" id="sidebar">
+    <ul>
+
+        <li class="section-title">عام</li>
+
+        <li class="active">
+            <a href="home.html">
+                <span class="icon"><i class="fa-solid fa-house"></i></span> الرئيسية
+            </a>
+        </li>
+
+        <li class="has-submenu ">
+    <div class="menu-item">
+        <a href="#">
+            <span class="icon"><i class="fa-solid fa-house"></i></span> الطلبات
+        </a>
+        <span class="arrow"><i class="fa-solid fa-angle-down"></i></span>
+    </div>
+
+    <!-- القائمة اللي هتظهر -->
+    <ul class="submenu">
+        <li><a href="app.html">الطلبات</a></li>
+        <li><a href="القسائم.html">القسائم</a></li>
+    </ul>
+</li>
+
+
+       <li class="has-submenu">
+    <div class="menu-item">
+      
+            <span class="icon"><i class="fa-solid fa-shop"></i></span> المنتجات
+       
+        <span class="arrow"><i class="fa-solid fa-angle-down"></i></span>
+    </div>
+
+    <!-- القائمة اللي هتظهر -->
+    <ul class="submenu">
+        <li><a href="المنتجات.html">المنتجات</a></li>
+        <li><a href=" القسائم.html">الأقسام</a></li>
+    </ul>
+</li>
+
+        <li>
+            <a href="العملاء.html">
+                <span class="icon"><i class="fa-solid fa-user-group"></i></span> العملاء
+            </a>
+        </li>
+
+        <li>
+            <a href="">
+                <span class="icon"><i class="fa-solid fa-chart-simple"></i></span> التقارير
+            </a>
+        </li>
+
+        <li>
+            <a href="التقيمات.html">
+                <span class="icon"><i class="fa-regular fa-star"></i></span> التقييمات
+            </a>
+        </li>
+
+        <li>
+            <a href="الصفحه التعريفيه.html">
+                <span class="icon"><i class="fa-solid fa-book-open"></i></span> الصفحات التعريفية
+            </a>
+        </li>
+
+        <li class="section-title">أدوات مساعدة</li>
+
+        <li>
+            <a href="خدمات التاجر.html">
+                <span class="icon">🧩</span> خدمات التاجر
+            </a>
+        </li>
+
+        <li>
+            <a href="تفعيل الشحن.html">
+                <span class="icon"><i class="fa-solid fa-ship"></i></span> تفعيل الشحن
+            </a>
+        </li>
+
+        <li>
+            <a href="خدمات الذكاء الصناعي.html">
+                <span class="icon">🤖</span> خدمات الذكاء الاصطناعي
+            </a>
+        </li>
+
+        <li class="section-title">الموردين</li>
+
+        <li>
+            <a href="الموردين.html">
+                <span class="icon">📦</span> المستودعات السعودية
+            </a>
+        </li>
+
+        <li>
+            <a href="المنتجات الرقميه2.html">
+                <span class="icon"><i class="fa-solid fa-computer"></i></span> المنتجات الرقمية
+            </a>
+        </li>
+
+    </ul>
+</aside>
+
+
+
+</div>
+
+<!-- CHART JS -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="/assest/css/main.js">
+
+
+</script>
+<script src="/assests/js/home.js"></script>
+
+
+
 </body>
 </html>
