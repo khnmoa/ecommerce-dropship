@@ -7842,6 +7842,12 @@ margin-right:285px;
     .product-card {
         width: 100%;
     }
+    services-grid {
+    display:block;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-top: 30px;
+}
 
     /* Categories full width */
     .categories {
@@ -7904,15 +7910,14 @@ margin-right:285px;
     margin-top: -30px;
 }
 .services-grid {
-    display: grid;
+    display: block;
     grid-template-columns: repeat(1fr, 1fr);
     gap: 25px;
     margin-top: 30px;
 }
 .service-grid {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 28px;
+ 
+  
 
 }
 .services-layout {
