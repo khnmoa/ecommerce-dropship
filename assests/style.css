@@ -947,8 +947,7 @@ display:none
     margin-right: 0;
   }
     /* إخفاء المزيد من الأعمدة */
-    table th:nth-child(3),
-    table td:nth-child(3),
+  
     table th:nth-child(6),
     table td:nth-child(6),
     table th:nth-child(10),
@@ -8082,9 +8081,8 @@ margin-right:285px;
     -webkit-overflow-scrolling: touch;
   }
   
-  .customerss-tables {
-    min-width: 600px;
-  }
+ 
+  
   
   /* Content padding adjustment */
   .contens {
