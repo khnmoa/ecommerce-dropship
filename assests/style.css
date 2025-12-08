@@ -8202,4 +8202,149 @@ margin-right:285px;
   }
 }
 
+/* ============================================ */
+/* المنتجات.html - Products Page Responsive */
+/* ============================================ */
+
+/* Tablet and below (768px) */
+@media (max-width: 768px) {
+  
+  /* Filter bar stacks vertically */
+  .filter-bar {
+    flex-direction: column;
+    align-items: stretch !important;
+    gap: 15px;
+    margin-right: 0 !important;
+    padding: 15px;
+  }
+  
+  .left-controls,
+  .right-search {
+    width: 100%;
+    flex-direction: column;
+  }
+  
+  .left-controls {
+    order: 2;
+  }
+  
+  .right-search {
+    order: 1;
+  }
+  
+  /* Search box full width */
+  .filter-bar .search-box {
+    width: 100% !important;
+  }
+  
+  .filter-bar .search-box input {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100%;
+    box-sizing: border-box;
+    text-align: right;
+    direction: rtl;
+  }
+  
+  /* Buttons full width */
+  .filter-bar .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  /* Products grid responsive */
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 15px;
+    padding: 10px;
+  }
+  
+  /* Product card adjustments */
+  .product-card {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  /* Pagination responsive */
+  .pagination-wrapper {
+    flex-direction: column;
+    gap: 15px;
+    margin: 20px 10px;
+  }
+  
+  .pagination-info {
+    order: 2;
+  }
+  
+  .pagination {
+    order: 1;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+/* Mobile phones (480px and below) */
+@media (max-width: 480px) {
+  
+  /* Products grid single column */
+  .products-grid {
+    grid-template-columns: 1fr;
+    padding: 5px;
+  }
+  
+  /* Product card compact */
+  .product-card {
+    padding: 15px;
+  }
+  
+  .product-img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .product-title {
+    font-size: 15px;
+  }
+  
+  .category {
+    font-size: 12px;
+  }
+  
+  .price {
+    font-size: 16px;
+  }
+  
+  .desc {
+    font-size: 12px;
+    height: auto;
+  }
+  
+  .stock-row {
+    flex-direction: column;
+    gap: 5px;
+    font-size: 13px;
+  }
+  
+  /* Action buttons stack */
+  .actions {
+    flex-direction: column;
+  }
+  
+  .delete-btn {
+    width: 100%;
+  }
+  
+  /* Pagination compact */
+  .page-btn {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+  
+  /* Filter buttons smaller text */
+  .filter-bar .btn {
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+}
+
   
