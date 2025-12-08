@@ -8347,4 +8347,224 @@ margin-right:285px;
   }
 }
 
+
+/* ========== HOME PAGE RESPONSIVE FIXES ========== */
+
+@media (max-width: 768px) {
+  /* Main container adjustments */
+  .mai {
+    padding: 15px;
+  }
+
+  /* Header section */
+  header h2 {
+    font-size: 20px;
+  }
+
+  header p {
+    font-size: 13px;
+  }
+
+  /* Top stats cards - stack vertically */
+  .cards {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .cards .card {
+    width: 100% !important;
+    flex: none;
+  }
+
+  /* Grid layout - stack vertically */
+  .layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  /* Chart cards adjustments */
+  .layout .card {
+    width: 100%;
+  }
+
+  /* Card header - stack vertically on small screens */
+  .card-header.flex {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .card-header.flex > div {
+    width: 100%;
+  }
+
+  /* Buttons row in chart header */
+  .card-header .btn.small {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  /* Chart canvas responsive */
+  canvas {
+    height: 200px !important;
+    width: 100% !important;
+  }
+
+  /* Orders box */
+  .box {
+    padding: 15px;
+    overflow-x: hidden;
+  }
+
+  .box h2 {
+    font-size: 18px;
+  }
+
+  .box .sub {
+    font-size: 13px;
+  }
+
+  /* Filters - stack vertically */
+  .filters {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+
+  .filter-wrapper,
+  .filters .btn {
+    width: 100% !important;
+  }
+
+  /* Table wrapper - horizontal scroll */
+  .box table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .box table thead,
+  .box table tbody,
+  .box table tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+  }
+
+  .box table th,
+  .box table td {
+    padding: 10px 8px;
+    font-size: 13px;
+  }
+
+  /* Hide some table columns on mobile */
+  .box table th:nth-child(4),
+  .box table td:nth-child(4),
+  .box table th:nth-child(5),
+  .box table td:nth-child(5) {
+    display: none;
+  }
+
+  /* Status badges smaller */
+  .status {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+
+  /* Product images in table */
+  .box table td img {
+    width: 35px !important;
+    height: 35px !important;
+  }
+
+  /* Row menu positioning */
+  .row-menu {
+    right: 10px;
+    left: 10px;
+    width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra small screens */
+  .mai {
+    padding: 10px;
+  }
+
+  header h2 {
+    font-size: 18px;
+  }
+
+  header p {
+    font-size: 12px;
+  }
+
+  /* Stats cards */
+  .cards .card {
+    padding: 15px;
+  }
+
+  .cards .card h3 {
+    font-size: 14px;
+  }
+
+  .stat {
+    font-size: 22px;
+  }
+
+  /* Charts */
+  .layout .card {
+    padding: 15px;
+  }
+
+  .card-header .btn.small {
+    font-size: 11px;
+    padding: 5px 8px;
+  }
+
+  canvas {
+    height: 180px !important;
+  }
+
+  /* Orders table - more compact */
+  .box table th,
+  .box table td {
+    padding: 8px 6px;
+    font-size: 12px;
+  }
+
+  /* Hide more columns on very small screens */
+  .box table th:nth-child(6),
+  .box table td:nth-child(6) {
+    display: none;
+  }
+
+  /* Product info in table */
+  .box table td img {
+    width: 30px !important;
+    height: 30px !important;
+  }
+
+  /* Status badges even smaller */
+  .status {
+    font-size: 10px;
+    padding: 3px 6px;
+  }
+
+  /* Filter wrapper and menu */
+  .filter-wrapper .btn {
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+
+  .filter-menu {
+    width: 100%;
+  }
+}
+
   
