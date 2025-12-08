@@ -8005,5 +8005,201 @@ margin-right:285px;
   }
 
 
+/* ============================================ */
+/* MOBILE RESPONSIVE FIXES - DO NOT TOUCH DESKTOP STYLES ABOVE */
+/* ============================================ */
+
+/* Tablet and below (768px) */
+@media (max-width: 768px) {
+  
+  /* ===== المحفظه.html - Wallet Page ===== */
+  
+  /* Make wallet container stack vertically */
+  .wallet-container {
+    flex-direction: column !important;
+    gap: 20px;
+  }
+  
+  /* Full width for both boxes */
+  .withdraw-box,
+  .card-box {
+    width: 100% !important;
+  }
+  
+  /* Black card responsive */
+  .black-card {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  /* Statement button full width */
+  .statement-btn {
+    margin-right: 0 !important;
+    width: 100%;
+  }
+  
+  /* Tabs stack to single column on very small screens */
+  .tabs .tab {
+    flex: 1 1 33.33%;
+  }
+  
+  /* ===== العملاء.html - Customers Page ===== */
+  
+  /* Customers filters stack vertically */
+  .customers-filters {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch !important;
+  }
+  
+  .customers-filters .right-side,
+  .customers-filters .left-side {
+    width: 100%;
+  }
+  
+  .customers-filters .search-box {
+    width: 100% !important;
+  }
+  
+  .customers-filters .search-box input {
+    width: 100% !important;
+    min-width: 100%;
+  }
+  
+  .customers-filters .left-side {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .filter-btn,
+  .export-btns {
+    flex: 1;
+  }
+  
+  /* Table horizontal scroll */
+  .customerss-table-box {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .customerss-tables {
+    min-width: 600px;
+  }
+  
+  /* Content padding adjustment */
+  .contens {
+    margin-right: 0 !important;
+    padding: 15px;
+  }
+  
+  /* ===== باقه المتجر.html - Package Popup ===== */
+  
+  /* Package box takes more width */
+  .package-box {
+    width: 95% !important;
+    height: auto !important;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  
+  /* Popup content stacks vertically */
+  .popup-content {
+    flex-direction: column !important;
+    gap: 20px;
+  }
+  
+  .package-right,
+  .payment-left {
+    width: 100% !important;
+  }
+  
+  .package-right {
+    padding-right: 15px;
+  }
+  
+  .payment-left h4 {
+    padding-top: 10px;
+  }
+  
+  /* Full width buttons */
+  .btn-upgrade,
+  .btn-renew {
+    width: 100% !important;
+  }
+  
+  .pay-item,
+  .invoice-row {
+    width: 100% !important;
+  }
+}
+
+/* Mobile phones (480px and below) */
+@media (max-width: 480px) {
+  
+  /* ===== Wallet Page - Extra small screens ===== */
+  
+  /* Reduce black card height */
+  .black-card {
+    height: 180px !important;
+  }
+  
+  .black-card .balance {
+    font-size: 22px !important;
+  }
+  
+  .black-card .charge-btn {
+    font-size: 12px !important;
+    padding: 6px 10px !important;
+  }
+  
+  /* Tabs full width stacking */
+  .tabs {
+    flex-wrap: wrap;
+  }
+  
+  .tabs .tab {
+    flex: 1 1 100%;
+    margin-bottom: 5px;
+  }
+  
+  /* Two inputs stack */
+  .two-inputs {
+    flex-direction: column !important;
+  }
+  
+  /* ===== Customers Table ===== */
+  
+  .customerss-tables {
+    font-size: 13px;
+  }
+  
+  .customerss-table th,
+  .customerss-table td {
+    padding: 10px 6px;
+  }
+  
+  /* ===== Package Popup ===== */
+  
+  .package-box {
+    width: 98% !important;
+    border-radius: 10px;
+  }
+  
+  .close-popup {
+    font-size: 24px;
+  }
+  
+  .pay-item {
+    flex-wrap: wrap;
+    padding: 10px;
+  }
+  
+  .manage {
+    width: 100%;
+    text-align: center;
+    padding: 5px;
+    margin-top: 5px;
+  }
+}
 
   
