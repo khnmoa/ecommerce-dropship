@@ -8,9 +8,112 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="assests/responsive.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap" rel="stylesheet">
 
 </head>
+ <style>
+  /* ======================================================= */
+/* 📱 تكييف جدول الخدمات (Orders Table) للشاشات الصغيرة 📱 */
+/* ======================================================= */
 
+@media (max-width: 768px) {
+
+    /* --- تنسيق شريط الخدمات (التابات والبحث) --- */
+    .services-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .services-tabs-bar {
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+        padding-bottom: 5px;
+    }
+
+    .services-tabs-bar a {
+        display: inline-block;
+    }
+
+    .services-search {
+        width: 100%;
+    }
+
+    .status-filter {
+        overflow-x: auto;
+        white-space: nowrap;
+        padding: 10px 0;
+    }
+
+    .status-filter .status-item {
+        display: inline-block;
+        margin-left: 10px;
+    }
+
+
+    /* --- تحويل الجدول إلى بطاقات (Card View) --- */
+    .orders-table table {
+        /* إزالة مظهر الجدول العادي */
+        border: none;
+        width: 100%; /* اجعل العرض 100% ليناسب الشاشة */
+    }
+
+    .orders-table thead {
+        /* إخفاء رأس الجدول (العناوين) */
+        display: none;
+    }
+
+    .orders-table tbody,
+    .orders-table tr {
+        /* جعل كل صف يبدو كبطاقة */
+        display: block;
+    }
+
+    .orders-table tr {
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        padding: 10px;
+        background-color: #fff; /* خلفية بيضاء للبطاقة */
+    }
+
+    .orders-table td {
+        /* جعل كل خلية تظهر كصف جديد داخل البطاقة */
+        display: block;
+        text-align: right;
+        padding: 5px 0;
+        border-bottom: 1px solid #eee; /* فاصل بين العناصر داخل البطاقة */
+        position: relative;
+    }
+
+    .orders-table td:last-child {
+        border-bottom: none;
+    }
+
+    /* إضافة عنوان لكل حقل (بيانات) باستخدام خاصية content و data-label */
+    .orders-table td::before {
+        content: attr(data-label); /* عرض اسم العمود */
+        font-weight: bold;
+        float: right; /* وضع التسمية على اليمين */
+        margin-left: 10px;
+        color: #555;
+    }
+
+    /* ملاحظة: نحتاج لإضافة data-label في HTML ليتم عرضها */
+    .orders-table tr td:nth-of-type(1)::before { content: "تاريخ الطلب"; }
+    .orders-table tr td:nth-of-type(2)::before { content: "الطلب"; }
+    .orders-table tr td:nth-of-type(3)::before { content: "الحالة"; }
+
+    /* تعديل تنسيق الحالة ليظهر بشكل واضح */
+    .orders-table .state {
+        padding: 4px 8px;
+        font-size: 13px;
+        border-radius: 4px;
+        display: inline-block;
+    }
+}
+ </style>
 <body>
 
 
@@ -137,7 +240,8 @@
         </li>
 
         <li>
-            <a href="">
+                    <a href="/التقارير.html">
+
                 <span class="icon"><i class="fa-solid fa-chart-simple"></i></span> التقارير
             </a>
         </li>

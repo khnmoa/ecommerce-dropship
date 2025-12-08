@@ -12,6 +12,98 @@
 
 <style>
 
+@media (max-width: 768px) {
+
+ 
+
+    /* 🔹 إخفاء بعض الأيقونات في الموبايل لو ضيقة */
+    .topbar .icons {
+        justify-content: space-between;
+        width: 100%;
+    }
+
+
+    .cards {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+  
+    .layout {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    /* 🔹 تصغير الـ box الخاص بالطلبات */
+    .box table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .box table td img {
+        width: 35px !important;
+        height: 35px !important;
+    }
+
+    /* 🔹 تحسين الفلاتر */
+    .filters {
+    
+        gap: 10px;
+        align-items: flex-start;
+    }
+
+    .filters .btn {
+        width: 100%;
+    }
+
+    /* 🔹 القائمة الجانبية تتحول إلى منيو سلايدر */
+    .sidebar {
+        width: 260px;
+        right: -260px;
+        transition: 0.3s;
+    }
+
+    #menuToggle:checked ~ .sidebar {
+        right: 0;
+    }
+
+    .menu-btn {
+        display: block;
+        font-size: 25px;
+        position: fixed;
+        top: 15px;
+        right: 15px;
+        z-index: 999;
+        cursor: pointer;
+    }
+}
+
+/* ===========================
+   📱 موبايل صغير جدًا (≤ 480px)
+   =========================== */
+@media (max-width: 480px) {
+    h2, h3 {
+        font-size: 16px;
+    }
+
+    .value {
+        font-size: 18px;
+    }
+
+    .topbar img.logo {
+        width: 110px;
+    }
+
+    /* 🔹 تحسين الجدول أكثر */
+    .box table td,
+    .box table th {
+        font-size: 13px;
+        padding: 6px;
+    }
+}
+
 </style>
 </head>
 
@@ -101,10 +193,11 @@
     </header>
 
     <!-- TOP CARDS -->
-    <div class="cards">
-      <div class="card"><h3>الطلبات</h3><div class="stat">542 <span style="color:var(--success)">+10%</span></div></div>
+    <div class="cards"> 
+        <div class="card"><h3>المبيعات</h3><div class="stat">542 <img class="rll" src="/image/Saudi_Riyal_Symbol.svg.png"> <span style="color:var(--success)">+25%</span></div></div>
+    
       <div class="card"><h3>الزوار</h3><div class="stat">542 <span style="color:var(--danger)">-10%</span></div></div>
-      <div class="card"><h3>المبيعات</h3><div class="stat">542 <span style="color:var(--success)">+25%</span></div></div>
+     <div class="card"><h3>الطلبات</h3><div class="stat">542 <span style="color:var(--success)">+10%</span></div></div>
     </div>
 
     <!-- GRID -->
@@ -114,7 +207,7 @@
         <div class="card" style="margin-top:20px">
           <button class="btn">آخر 7 أيام</button>
           <h3>مبيعات الأسبوع</h3>
-          <div class="value">500 جنيه</div>
+          <div class="value">500 <img class="rll" src="/image/Saudi_Riyal_Symbol.svg.png"></div>
           <canvas id="weeklyChart"></canvas>
         </div>
       </div>
@@ -129,7 +222,7 @@
             </div>
             <div>
                 <h3>إجمالي الربح</h3>
-                <div class="value">4787 جنيه</div>
+                <div class="value">4787 <img class="rll" src="/image/Saudi_Riyal_Symbol.svg.png"> </div>
             </div>
         </div>
         <canvas id="monthlyChart"></canvas>
@@ -187,7 +280,7 @@
             <td>أحمد خليل</td>
             <td>2026</td>
             <td>ماستركارد</td>
-            <td>299.00 د.إ</td>
+            <td>299.00 <img class="rll" src="/image/Saudi_Riyal_Symbol.svg.png"></td>
             <td><span class="status paid">تم الدفع ✔</span></td>
             <td><span class="status done">مكتمل ✔</span></td>
             <td class="actions">⋯</td>
@@ -203,7 +296,7 @@
             <td>عرفات حسين</td>
             <td>2026</td>
             <td>فيزا</td>
-            <td>299.00 د.إ</td>
+            <td>299.00 <img class="rll" src="/image/Saudi_Riyal_Symbol.svg.png"></td>
             <td><span class="status pending">معلق</span></td>
             <td><span class="status pending">قيد التنفيذ 🔄</span></td>
             <td class="actions">⋯</td>
@@ -219,7 +312,7 @@
             <td>نصرت جهان</td>
             <td>2026</td>
             <td>باي بال</td>
-            <td>299.00 د.إ</td>
+            <td>299.00 <img class="rll" src="/image/Saudi_Riyal_Symbol.svg.png"></td>
             <td><span class="status paid">تم الدفع ✔</span></td>
             <td><span class="status done">مكتمل ✔</span></td>
             <td class="actions">⋯</td>
@@ -235,7 +328,7 @@
             <td>تانيا أكثر</td>
             <td>2026</td>
             <td>ماستركارد</td>
-            <td>299.00 د.إ</td>
+            <td>299.00.<img class="rll" src="/image/Saudi_Riyal_Symbol.svg.png"></td>
             <td><span class="status notpaid">غير مدفوع ✖</span></td>
             <td><span class="status failed">ملغي ✖</span></td>
             <td class="actions">⋯</td>
@@ -309,7 +402,8 @@
         </li>
 
         <li>
-            <a href="">
+                     <a href="/التقارير.html">
+
                 <span class="icon"><i class="fa-solid fa-chart-simple"></i></span> التقارير
             </a>
         </li>

@@ -1,5 +1,5 @@
   const invoicesData = [
-      { id: 8362, date: '2025\\10\\24', type: 'سحب أرباح',amount: 5,  currency: '﷼' 
+      { id: 8362, date: '2025\\10\\24', type: 'سحب أرباح',amount: 5,  currency: '<img class="rl" src="/image/Saudi_Riyal_Symbol.svg.png">' 
  },
       { id: 8361, date: '2025\\10\\20', type: 'شحن رصيد', amount: 5 },
       { id: 8360, date: '2025\\10\\18', type: 'سحب أرباح', amount: 5},
@@ -18,7 +18,7 @@
     <div>
       <div style="font-weight:700">الفاتورة #${inv.id}</div>
       <div style="font-size:13px;color:var(--muted)">
-        ${inv.date} • ${inv.amount} ريال
+        ${inv.date} • ${inv.amount} <img class="rl" src="/image/Saudi_Riyal_Symbol.svg.png">
       </div>
     </div>
   </div>

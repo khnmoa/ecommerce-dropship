@@ -320,7 +320,9 @@ padding-right: 208px;
         justify-content: space-between;
         padding: 0 20px;
     }
-
+.ap {
+    margin-right: 285px;
+}
     .center-section { flex:1; display:flex; justify-content:center; }
     .search-box {
         width:55%; padding:10px 15px; border-radius:8px;
@@ -474,7 +476,7 @@ padding-right: 208px;
     margin-bottom: 1px;
     font-size: 15px;
     color: #444;
-    display: flex;
+;
     align-items: center;
     cursor: pointer;
     border-radius: 8px;
@@ -933,7 +935,7 @@ padding-right: 208px;
 display:none
     }
     .filters {
-        flex-direction: column;
+   
     }
 
     .filters .btn {
@@ -1649,6 +1651,7 @@ display:none
     .grid {
         grid-template-columns: repeat(2, 1fr); /* صفين في التابلت */
     }
+  
 }
 
 @media (max-width: 600px) {
@@ -1662,6 +1665,9 @@ display:none
   .sidebar-toggle {
     display: block;
   }
+    .ap{
+      margin-right:0
+    }
 }
 .content {
   margin-right: 260px;
@@ -2281,7 +2287,7 @@ position: absolute;
   border: none;
   cursor: pointer;
   margin-bottom: 20px;
-  margin-right: 173px;
+
 }
 
 .withdraw-card {
@@ -4343,7 +4349,7 @@ input:checked + .slider:before {
 .input,
 .textarea,
 select.input {
-    width: 100%;
+  
     padding: 12px;
     border-radius: 8px;
     border: 1px solid #ddd;
@@ -4579,7 +4585,7 @@ input:checked + .slider:before {
 }
 
 .product-search {
-    width: 100%;
+
     padding: 12px 40px 12px 12px;
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -5149,9 +5155,13 @@ margin-right:22px;
         flex-wrap: wrap;
         gap: 10px;
     }
+    .ap{
+      margin-right:0
+    }
 }
-
-
+.section-title{
+padding-top: 50px;
+}
 
 .sm{
   font-weight: 100;
@@ -5314,8 +5324,8 @@ margin-right:22px;
   border-radius: 8px;
   border: none;
   cursor: pointer;
-  margin-bottom: 20px;
-  margin-right: 173px;
+
+ 
 }
 
 .withdraw-card {
@@ -6806,7 +6816,9 @@ margin-right: auto;
 
 /* الشاشات من 768px ↓ (تابلت عمودي / موبايل كبير) */
 @media (max-width: 768px) {
-
+.service-card{
+  margin-bottom: 15px;
+}
   
 .details-row {
  display: block;
@@ -6818,7 +6830,7 @@ margin-right: auto;
     /* إخفاء القائمة الجانبية افتراضياً */
     .sidebar {
         width: 0;
-        overflow: hidden;
+     
         transition: 0.3s;
         padding: 0;
     }
@@ -7614,9 +7626,6 @@ margin-left: 0;
     text-decoration: none;
     color:#000
   }
-  .ap{
-margin-right:285px;
-  }
 
 
 
@@ -7727,7 +7736,7 @@ margin-right:285px;
 
     /* ====== الفلاتر ====== */
     .filters {
-        flex-wrap: wrap;
+  
         gap: 10px;
     }
 
@@ -7809,7 +7818,9 @@ margin-right:285px;
    .sidebar {
         right: -260px;
     }
-
+.ap{
+  margin-right: 0;
+}
     #menuToggle:checked ~ .sidebar {
         right: 0;
     }
@@ -7856,12 +7867,12 @@ margin-right:285px;
 
     /* Search box */
     .search-container input {
-        width: 100%;
+      
     }
 
     /* Pagination full width */
     .pagination {
-        flex-direction: column;
+      
         gap: 5px;
     }
     .ai-cards{
@@ -7984,7 +7995,7 @@ margin-right:285px;
 
     /* Notifications box يتحرك للأسفل */
     .notifications-box {
-        position: static;
+       
         width: 100%;
         box-shadow: none;
         border-radius: 0;
@@ -7992,9 +8003,7 @@ margin-right:285px;
         margin-top: 5px;
     }
 
-    #showNotifications:checked ~ .notifications-box {
-        display: flex;
-    }
+   
 
   }
 
@@ -8061,7 +8070,7 @@ margin-right:285px;
   }
   
   .customers-filters .search-box input {
-    width: 100% !important;
+   
     min-width: 100%;
   }
   
@@ -8345,4 +8354,37 @@ margin-right:285px;
   }
 }
 
-  
+  .rll{
+    width:20px
+  }
+  .rl{
+    width:12px;
+    display: inline-block;
+  }
+
+  .modal-boxs {
+    background: #fff;
+    width: 56%;
+    padding: 0px 30px;
+    border-radius: 14px;
+    position: relative;
+    text-align: right;
+    height: 100%;
+}
+.new-order-btn{
+  width:150px
+}
+@media(max-width:600px){
+  .modal-boxs {
+    background: #fff;
+    width: 92%;
+    padding: 20px 30px;
+    border-radius: 14px;
+    position: relative;
+    text-align: right;
+    height: 100%;
+}
+.new-order-btn {
+width:100%;
+}
+}
