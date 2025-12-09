@@ -41,7 +41,7 @@ body{
 
 .colleft, .colright {
   flex: 0 0 50%;
-  padding: 36px;
+
   display:flex;
   flex-direction:column;
   justify-content:center;
@@ -177,7 +177,7 @@ padding-right: 208px;
 
   .colright {
     flex: 0 0 100%; /* العمود الأيمن ياخد كامل العرض */
-    padding: 20px;
+   padding-bottom: 50%;
   }
 
   .frames {
@@ -8387,4 +8387,7 @@ margin-left: 0;
 .new-order-btn {
 width:100%;
 }
+}
+body{
+  font-family: 'Rubik', sans-serif;
 }
