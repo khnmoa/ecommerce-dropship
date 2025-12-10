@@ -8,7 +8,41 @@
 <link rel="stylesheet" href="/assests/style.css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* تنسيق الزر الرئيسي للقائمة */
+.menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* يجعل السهم في أقصى اليسار */
+    width: 100%;
+ 
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
 
+/* إخفاء القائمة الفرعية */
+.submenu {
+    display: none;
+    list-style: none;
+    padding-right: 15px; /* إزاحة للداخل */
+    background: rgba(0,0,0,0.03); /* لون خلفية خفيف */
+}
+
+/* إظهار القائمة عند التفعيل */
+.has-submenu.active .submenu {
+    display: block;
+}
+
+/* تدوير السهم */
+.has-submenu .arrow i {
+    transition: transform 0.3s ease;
+}
+
+.has-submenu.active .arrow i {
+    transform: rotate(180deg);
+}
+  </style>
 </head>
 
 <body>
@@ -67,7 +101,7 @@
     </div>
 
     <div class="buttons">
-        <button class="visit-btn">زيارة المتجر</button>
+        <button class="visit-btn">زيارة المتجر<i class="fa-solid fa-link" style="font-size: 14px; color: #888;"></i></button>
         <button class="settings-btn">الإعدادات ⚙️</button>
     </div>
 
@@ -84,7 +118,111 @@
 </div>
 </div>
 </div>
+   <input type="checkbox" id="menuToggle" hidden>
+<label for="menuToggle" class="menu-btn">☰</label>
+<aside class="sidebar" id="sidebar">
+    <ul>
 
+        <li class="section-title">عام</li>
+
+        <li >
+            <a href="home.html">
+                <span class="icon"><i class="fa-solid fa-house"></i></span> الرئيسية
+            </a>
+        </li>
+
+     
+  <li class="has-submenu">
+    <a href="javascript:void(0)" class="menu-item">
+        <div style="display:flex; align-items:center; gap:10px;">
+            <span class="icon"><i class="fa-solid fa-cart-shopping"></i></i></span>
+            <span>الطلبات</span>
+        </div>
+        <span class="arrow"><i class="fa-solid fa-angle-down"></i></span>
+    </a>
+
+    <ul class="submenu">
+        <li class="active"><a href="app.html">الطلبات</a></li>
+        <li><a href="القسائم.html">القسائم</a></li>
+    </ul>
+</li>
+
+<li class="has-submenu">
+    <a href="javascript:void(0)" class="menu-item">
+        <div style="display:flex; align-items:center; gap:10px;">
+            <span class="icon"><i class="fa-solid fa-shop"></i></span>
+            <span>المنتجات</span>
+        </div>
+        <span class="arrow"><i class="fa-solid fa-angle-down"></i></span>
+    </a>
+
+    <ul class="submenu">
+        <li><a href="المنتجات.html">المنتجات</a></li>
+        <li><a href=" القسائم.html">الأقسام</a></li>
+    </ul>
+</li>
+
+        <li>
+            <a href="العملاء.html">
+                <span class="icon"><i class="fa-solid fa-user-group"></i></span> العملاء
+            </a>
+        </li>
+
+        <li>
+                       <a href="/التقارير.html">
+
+                <span class="icon"><i class="fa-solid fa-chart-simple"></i></span> التقارير
+            </a>
+        </li>
+
+        <li >
+            <a href="التقيمات.html">
+                <span class="icon"><i class="fa-regular fa-star"></i></span> التقييمات
+            </a>
+        </li>
+
+        <li>
+            <a href="الصفحه التعريفيه.html">
+                <span class="icon"><i class="fa-solid fa-book-open"></i></span> الصفحات التعريفية
+            </a>
+        </li>
+
+        <li class="section-title">أدوات مساعدة</li>
+
+        <li>
+            <a href="خدمات التاجر.html">
+                <span class="icon">🧩</span> خدمات التاجر
+            </a>
+        </li>
+
+        <li>
+            <a href="تفعيل الشحن.html">
+                <span class="icon"><i class="fa-solid fa-ship"></i></span> تفعيل الشحن
+            </a>
+        </li>
+
+        <li>
+            <a href="خدمات الذكاء الصناعي.html">
+                <span class="icon">🤖</span> خدمات الذكاء الاصطناعي
+            </a>
+        </li>
+
+        <li class="section-title">الموردين</li>
+
+        <li>
+            <a href="الموردين.html">
+                <span class="icon">📦</span> المستودعات السعودية
+            </a>
+        </li>
+
+        <li>
+            <a href="المنتجات الرقميه2.html">
+                <span class="icon"><i class="fa-solid fa-computer"></i></span> المنتجات الرقمية
+            </a>
+        </li>
+
+    </ul>
+</aside>
 <div class="ap">
 
 
@@ -349,117 +487,22 @@
                 <span class="status active">مفعل</span>
             </div>
 
-        </div> 
+        </div>
       </main>
          <!-- SIDEBAR -->
-   <input type="checkbox" id="menuToggle" hidden>
-<label for="menuToggle" class="menu-btn">☰</label>
-<aside class="sidebar" id="sidebar">
-    <ul>
-
-        <li class="section-title">عام</li>
-
-        <li >
-            <a href="home.html">
-                <span class="icon"><i class="fa-solid fa-house"></i></span> الرئيسية
-            </a>
-        </li>
-
-        <li class="has-submenu ">
-    <div class="menu-item">
-        <a href="#">
-            <span class="icon"><i class="fa-solid fa-house"></i></span> الطلبات
-        </a>
-        <span class="arrow"><i class="fa-solid fa-angle-down"></i></span>
-    </div>
-
-    <!-- القائمة اللي هتظهر -->
-    <ul class="submenu">
-        <li class="active"><a href="app.html">الطلبات</a></li>
-        <li><a href="القسائم.html">القسائم</a></li>
-    </ul>
-</li>
-
-
-       <li class="has-submenu">
-    <div class="menu-item">
-      
-            <span class="icon"><i class="fa-solid fa-shop"></i></span> المنتجات
-       
-        <span class="arrow"><i class="fa-solid fa-angle-down"></i></span>
-    </div>
-
-    <!-- القائمة اللي هتظهر -->
-    <ul class="submenu">
-        <li><a href="المنتجات.html">المنتجات</a></li>
-        <li><a href=" القسائم.html">الأقسام</a></li>
-    </ul>
-</li>
-
-        <li>
-            <a href="العملاء.html">
-                <span class="icon"><i class="fa-solid fa-user-group"></i></span> العملاء
-            </a>
-        </li>
-
-        <li>
-            <a href="">
-                <span class="icon"><i class="fa-solid fa-chart-simple"></i></span> التقارير
-            </a>
-        </li>
-
-        <li>
-            <a href="/التقارير.html">
-                <span class="icon"><i class="fa-regular fa-star"></i></span> التقييمات
-            </a>
-        </li>
-
-        <li>
-            <a href="الصفحه التعريفيه.html">
-                <span class="icon"><i class="fa-solid fa-book-open"></i></span> الصفحات التعريفية
-            </a>
-        </li>
-
-        <li class="section-title">أدوات مساعدة</li>
-
-        <li>
-            <a href="خدمات التاجر.html">
-                <span class="icon">🧩</span> خدمات التاجر
-            </a>
-        </li>
-
-        <li>
-            <a href="تفعيل الشحن.html">
-                <span class="icon"><i class="fa-solid fa-ship"></i></span> تفعيل الشحن
-            </a>
-        </li>
-
-        <li>
-            <a href="خدمات الذكاء الصناعي.html">
-                <span class="icon">🤖</span> خدمات الذكاء الاصطناعي
-            </a>
-        </li>
-
-        <li class="section-title">الموردين</li>
-
-        <li>
-            <a href="الموردين.html">
-                <span class="icon">📦</span> المستودعات السعودية
-            </a>
-        </li>
-
-        <li>
-            <a href="المنتجات الرقميه2.html">
-                <span class="icon"><i class="fa-solid fa-computer"></i></span> المنتجات الرقمية
-            </a>
-        </li>
-
-    </ul>
-</aside>
 
 
 
 </div>
+<script >document.querySelectorAll(".has-submenu .menu-item").forEach(item => {
+    item.addEventListener("click", function(e) {
+        // الوصول للعنصر الأب (li)
+        let parentLi = this.parentElement;
+
+        // تبديل الكلاس active (فتح/غلق)
+        parentLi.classList.toggle("active");
+    });
+});</script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="/assests/main.js"></script>
 <script src="/assests/js/home.js"></script>

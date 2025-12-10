@@ -11,7 +11,123 @@
 
 
 <style>
+/* الحاوية الكبيرة للكروت */
+.db-cards-grid {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
 
+/* الكارت الواحد */
+.db-single-card {
+    display: flex !important;
+ 
+  
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #f0f0f0;
+    border-radius: 16px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+    flex: 1;
+    min-width: 250px;
+}
+
+/* حاوية النصوص داخل الكارت */
+.db-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.db-text-wrapper h3 {
+    margin: 0;
+    font-size: 14px;
+    color: #888;
+}
+
+/* الصف الذي يحتوي الرقم والنسبة */
+.db-stat-row {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+}
+
+/* تنسيق الرقم */
+.db-num-box {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 800;
+    color: #1d1d1d;
+    gap: 5px;
+}
+
+/* تنسيق النسبة المئوية (البادج) */
+.db-stat-row span {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    background: #f3f3f3; /* لون احتياطي */
+}
+
+/* تلوين الخلفيات حسب نوع النسبة (أخضر أو أحمر) */
+.db-stat-row span[style*="success"] {
+    background-color: #ecfdf5 !important;
+    color: #10b981 !important;
+}
+
+.db-stat-row span[style*="danger"] {
+    background-color: #fef2f2 !important;
+    color: #ef4444 !important;
+}
+
+/* === تنسيق الأيقونات الجديدة === */
+.db-icon-box {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+  
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-right: 15px;
+}
+
+.db-icon-box svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* ألوان الأيقونات المخصصة */
+.db-icon-blue {
+    background-color: #eff6ff;
+    color: #3b82f6;
+}
+
+.db-icon-purple {
+    background-color: #fdf4ff;
+    color: #d946ef;
+}
+
+.db-icon-orange {
+    background-color: #fff7ed;
+    color: #f97316;
+}
+
+/* استجابة للموبايل */
+@media (max-width: 768px) {
+    .db-cards-grid {
+        flex-direction: column;
+    }
+}
 @media (max-width: 768px) {
 
  
@@ -163,7 +279,7 @@
     </div>
 
     <div class="buttons">
-        <button class="visit-btn">زيارة المتجر</button>
+        <button class="visit-btn">زيارة المتجر<i class="fa-solid fa-link" style="font-size: 14px; color: #888;"></i></button>
         <button class="settings-btn">الإعدادات ⚙️</button>
     </div>
 
@@ -193,12 +309,59 @@
     </header>
 
     <!-- TOP CARDS -->
-    <div class="cards"> 
-        <div class="card"><h3>المبيعات</h3><div class="stat">542 <img class="rll" src="/image/Saudi_Riyal_Symbol.svg.png"> <span style="color:var(--success)">+25%</span></div></div>
+ <div class="db-cards-grid">
     
-      <div class="card"><h3>الزوار</h3><div class="stat">542 <span style="color:var(--danger)">-10%</span></div></div>
-     <div class="card"><h3>الطلبات</h3><div class="stat">542 <span style="color:var(--success)">+10%</span></div></div>
+    <div class="db-single-card">
+        <div class="db-text-wrapper">
+            <h3>المبيعات</h3>
+            <div class="db-stat-row">
+                <div class="db-num-box">
+                    542 <img class="rll" src="/image/Saudi_Riyal_Symbol.svg.png">
+                </div> 
+                <span style="color:var(--success)">
+                    +25% 
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+                </span>
+            </div>
+        </div>
+        <div class="db-icon-box db-icon-blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2" /><line x1="2" y1="10" x2="22" y2="10" /></svg>
+        </div>
     </div>
+
+    <div class="db-single-card">
+        <div class="db-text-wrapper">
+            <h3>الزوار</h3>
+            <div class="db-stat-row">
+                <div class="db-num-box">542</div> 
+                <span style="color:var(--danger)">
+                    -10%
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                </span>
+            </div>
+        </div>
+        <div class="db-icon-box db-icon-purple">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        </div>
+    </div>
+
+    <div class="db-single-card">
+        <div class="db-text-wrapper">
+            <h3>الطلبات</h3>
+            <div class="db-stat-row">
+                <div class="db-num-box">542</div> 
+                <span style="color:var(--success)">
+                    +10%
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+                </span>
+            </div>
+        </div>
+        <div class="db-icon-box db-icon-orange">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+        </div>
+    </div>
+
+</div>
 
     <!-- GRID -->
     <div class="layout">
@@ -367,7 +530,7 @@
         <li class="has-submenu ">
     <div class="menu-item">
         <a href="#">
-            <span class="icon"><i class="fa-solid fa-house"></i></span> الطلبات
+            <span class="icon"><i class="fa-solid fa-cart-shopping"></i></i></span> الطلبات
         </a>
         <span class="arrow"><i class="fa-solid fa-angle-down"></i></span>
     </div>
