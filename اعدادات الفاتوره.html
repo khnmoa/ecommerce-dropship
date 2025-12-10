@@ -11,7 +11,23 @@
 
     <style>
 
-
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr; /* عمود واحد في الموبايل */
+    }
+    .group.full {
+        grid-column: span 1; /* يرجع ياخد عمود واحد */
+    }
+    .save-bar {
+        flex-direction: column; /* الأزرار تحت بعض */
+    }
+    .save-bar button {
+        width: 100%;
+    }
+    .box {
+        padding: 20px; /* تقليل الحواف في الموبايل */
+    }
+}
 </style>
 <body>
 <div class="topbar">
@@ -68,7 +84,8 @@
 
     <div class="buttons">
         <button class="visit-btn">زيارة المتجر<i class="fa-solid fa-link" style="font-size: 14px; color: #888;"></i></button>
-        <button class="settings-btn">الإعدادات ⚙️</button>
+     <a href="الاعدادات.html" class="settings-btn">الإعدادات ⚙️</a>
+a>
     </div>
 
     <ul class="menu-list">
@@ -109,7 +126,7 @@
 
     <!-- القائمة اللي هتظهر -->
     <ul class="submenu">
-        <li><a href="app.html">الطلبات</a></li>
+       <li ><a href="الطلبات.html">الطلبات</a></li>
         <li><a href="القسائم.html">القسائم</a></li>
     </ul>
 </li>

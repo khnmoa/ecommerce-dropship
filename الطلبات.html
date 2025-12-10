@@ -2,13 +2,362 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>الطلبات</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assests/style.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<style>
+  /* حاوية الفلتر */
+.filter-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent; /* أو white حسب رغبتك */
+    padding: 10px 0;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
 
+/* تجميع العناصر في اليمين */
+.right-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* تنسيق الأزرار وحقول الإدخال المشترك */
+.btn-outline, .date-input, .search-box input {
+    background-color: #fff;
+    border: 1px solid #e2e8f0; /* لون حدود رمادي فاتح */
+    border-radius: 8px; /* حواف دائرية */
+    padding: 8px 12px;
+    font-family: inherit;
+    font-size: 14px;
+    color: #4a5568;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    height: 40px; /* توحيد الارتفاع */
+    display: flex;
+    align-items: center;
+    gap: 8px; /* مسافة بين الأيقونة والنص */
+}
+
+/* تأثير عند المرور على الأزرار */
+.btn-outline:hover {
+    border-color: #cbd5e0;
+    background-color: #f7fafc;
+}
+
+/* تنسيق حقل التاريخ */
+.date-wrapper {
+    position: relative;
+}
+.date-input {
+    padding-left: 35px; /* مساحة للأيقونة */
+    width: 220px;
+}
+.input-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #a0aec0;
+    pointer-events: none;
+}
+
+/* تنسيق مربع البحث */
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.search-box input {
+    width: 250px;
+    padding-left: 35px; /* مساحة لأيقونة البحث */
+    border-radius: 8px;
+}
+.search-btn {
+    position: absolute;
+    left: 5px; /* لأن الموقع عربي */
+    background: none;
+    border: none;
+    color: #a0aec0;
+    cursor: pointer;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* === تنسيق القائمة المنسدلة الخاصة بالمنتج === */
+.dropdown-wrapper {
+    position: relative;
+}
+
+.dropdown-menu-filter {
+    display: none; /* مخفي افتراضياً */
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    list-style: none;
+    padding: 5px 0;
+    min-width: 150px;
+    z-index: 10;
+    margin-top: 5px;
+}
+
+.dropdown-menu-filter.show {
+    display: block; /* يظهر عند التفعيل */
+}
+
+.dropdown-menu-filter li a {
+    display: block;
+    padding: 8px 15px;
+    color: #4a5568;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.dropdown-menu-filter li a:hover {
+    background-color: #f7fafc;
+}
+/* الحاوية الخارجية (المسؤولة عن السكرول) */
+.table-box {
+    overflow-x: auto !important; /* إجبار السكرول */
+    width: 100%;
+}
+
+/* الجدول نفسه (المسؤول عن الحفاظ على العرض الكبير) */
+.orders-table {
+    min-width: 1000px; /* عرض كبير لإجبار السكرول على الظهور */
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* =========================================================
+   أكواد التجاوب (Responsive) - لجعل الشكل مثل الصورة
+   ========================================================= */
+
+/* 1. إعدادات الموبايل والتابلت (أقل من 992px) */
+@media (max-width: 992px) {
+
+    /* --- ترتيب الفلاتر (البحث والتاريخ) فوق بعض --- */
+    .filter-bar {
+        flex-direction: column-reverse; /* يعكس الترتيب: البحث فوق، والأزرار تحت */
+        align-items: stretch; /* تمدد العناصر لآخر العرض */
+        gap: 15px;
+    }
+
+    .right-controls {
+        flex-direction: column; /* الأزرار (تصدير، منتج، تاريخ) فوق بعض */
+        width: 100%;
+        gap: 10px;
+    }
+
+    .left-search {
+        width: 100%;
+    }
+
+    /* --- جعل الحقول والأزرار تأخذ عرض الشاشة بالكامل (مثل الصورة) --- */
+    .search-box, .search-box input,
+    .btn-outline, 
+    .date-wrapper, .date-input,
+    .dropdown-wrapper, .dropdown-wrapper button {
+        width: 100% !important; /* إجبار العرض الكامل */
+        justify-content: center; /* توسيط الكلام داخل الزر */
+        height: 45px; /* تكبير الارتفاع قليلاً للمس */
+    }
+
+    /* --- تنسيق العنوان وزر "طلب جديد" --- */
+    .title-wrapper {
+        flex-direction: column; /* العنوان فوق والزر تحت */
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .new-order-btn {
+        width: 100%; /* الزر الأحمر بعرض الشاشة */
+        padding: 12px;
+        margin-top: 5px;
+    }
+}
+
+/* 2. شريط الحالات (Status Filter) - سحب أفقي */
+@media (max-width: 768px) {
+    .status-filter {
+        display: flex;
+        overflow-x: auto; /* يسمح بالسحب يمين ويسار */
+        white-space: nowrap; /* يمنع نزول العناصر لسطر جديد */
+        padding-bottom: 10px;
+        gap: 10px;
+        -webkit-overflow-scrolling: touch; /* نعومة اللمس */
+    }
+    
+    /* إخفاء شريط التمرير للشكل الجمالي */
+    .status-filter::-webkit-scrollbar {
+        height: 0;
+        width: 0;
+    }
+}
+
+/* 3. إصلاح الجدول (Table) - سحب أفقي */
+.table-box {
+    display: block;
+    width: 100%;
+    overflow-x: auto; /* سكرول للجدول */
+    -webkit-overflow-scrolling: touch;
+    margin-top: 15px;
+    padding-bottom: 10px;
+}
+
+.orders-table {
+    min-width: 950px; /* عرض ثابت كبير للحفاظ على شكل الجدول */
+}
+
+/* =========================================
+   إخفاء أعمدة معينة في الموبايل
+   ========================================= */
+@media (max-width: 600px) {
+    .hide-mobile {
+        display: none !important;
+    }
+}
+/* =========================================
+   أكواد التجاوب (Media Queries) - أضف هذا الجزء
+   ========================================= */
+
+/* 1. تنسيق الموبايل والتابلت (أقل من 992px) */
+@media (max-width: 992px) {
+    /* ترتيب الفلاتر عمودياً */
+    .filter-bar {
+        flex-direction: column-reverse;
+        align-items: stretch;
+        gap: 15px;
+    }
+
+    .right-controls {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .left-search { width: 100%; }
+
+    /* جعل الحقول والأزرار بعرض كامل */
+    .search-box, .search-box input,
+    .btn-outline, 
+    .date-wrapper, .date-input,
+    .dropdown-wrapper, .dropdown-wrapper button {
+        width: 100% !important;
+        justify-content: center;
+        height: 45px;
+    }
+
+    /* تنسيق العنوان */
+    .title-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .new-order-btn {
+        width: 100%;
+        padding: 12px;
+        margin-top: 5px;
+    }
+}
+
+/* 2. تحسينات للموبايل الصغير (أقل من 768px) */
+@media (max-width: 768px) {
+    /* شريط الحالات قابل للسحب */
+    .status-filter {
+        display: flex;
+        overflow-x: auto;
+        white-space: nowrap;
+        padding-bottom: 10px;
+        gap: 10px;
+    }
+    
+    /* إخفاء الأعمدة المحددة */
+    .hide-mobile {
+        display: none !important;
+    }
+}
+/* =================================================
+   بداية كود التجاوب (Responsive) - ضعه في نهاية الـ style
+   ================================================= */
+
+/* إعدادات الشاشات الصغيرة (موبايل) */
+@media (max-width: 768px) {
+
+    /* 1. تفعيل إخفاء الأعمدة (هذا هو الجزء الناقص عندك) */
+    .hide-mobile {
+        display: none !important;
+    }
+
+    /* 2. جعل الجدول قابل للسحب يميناً ويساراً */
+    .table-box {
+        display: block;
+        width: 100%;
+        overflow-x: auto; /* سكرول */
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* 3. ترتيب الفلاتر والبحث فوق بعضها لعدم تصغير الصفحة */
+    .filter-bar {
+        flex-direction: column-reverse; /* البحث فوق */
+        gap: 15px;
+    }
+
+    /* 4. جعل جميع الأزرار والحقول بعرض الشاشة */
+    .right-controls, 
+    .left-search, 
+    .search-box, 
+    .search-box input,
+    .btn-outline, 
+    .date-wrapper, 
+    .date-input {
+        width: 100% !important;
+        justify-content: center; /* توسيط النص */
+    }
+    
+    .right-controls {
+        flex-direction: column; /* الأزرار تحت بعض */
+    }
+
+    /* 5. تنسيق العنوان وزر "طلب جديد" */
+    .title-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .new-order-btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+
+/* =========================================
+   إخفاء الأعمدة في الموبايل وتنسيق الجدول
+   ========================================= */
+@media (max-width: 600px) {
+    /* إخفاء العناصر التي تحمل هذا الكلاس */
+    .hide-mobile {
+        display: none !important;
+    }
+
+    /* تصغير المسافات والخط قليلاً في الموبايل ليصبح الجدول أنيقاً */
+    .orders-table th, .orders-table td {
+        padding: 10px 8px;
+        font-size: 12px;
+    }
+}
+</style>
 
 
 </head>
@@ -69,7 +418,8 @@
 
     <div class="buttons">
         <button class="visit-btn">زيارة المتجر<i class="fa-solid fa-link" style="font-size: 14px; color: #888;"></i></button>
-        <button class="settings-btn">الإعدادات ⚙️</button>
+         <a href="الاعدادات.html" class="settings-btn">الإعدادات ⚙️</a>
+
     </div>
 
     <ul class="menu-list">
@@ -109,7 +459,7 @@
 
     <!-- القائمة اللي هتظهر -->
     <ul class="submenu">
-        <li  class="active"><a href="app.html">الطلبات</a></li>
+        <li  class="active"><a href="الطلبات.html">الطلبات</a></li>
         <li><a href="القسائم.html">القسائم</a></li>
     </ul>
 </li>
@@ -202,22 +552,37 @@
     </div>
 <div class="bg">
     <!-- Filters -->
-    <div class="filter-bar">
-  <div class="left-controls">
-    <button class="btn"><i class="fa-solid fa-clock"></i> تصدير</button>
+  <div class="filter-bar">
+    <div class="right-controls">
+        
+        <button class="btn-outline">
+            <i class="fa-solid fa-file-export"></i> تصدير
+        </button>
 
-    <button class="btn">المنتج <i class="fa-solid fa-chevron-down"></i></button>
+        <div class="dropdown-wrapper">
+            <button class="btn-outline dropdown-toggle" id="productFilterBtn">
+                المنتج <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <ul class="dropdown-menu-filter" id="productFilterMenu">
+                <li><a href="#">ساعات</a></li>
+                <li><a href="#">إلكترونيات</a></li>
+                <li><a href="#">ملابس</a></li>
+            </ul>
+        </div>
 
-    <input id="dateRange" type="text" class="date-input" placeholder="اختر التاريخ">
-
-  </div>
-
-  <div class="right-search">
-    <div class="search-box">
-      <i class="fa-solid fa-magnifying-glass"></i>  <input type="text" placeholder="ابحث باسم المنتج...">
-    
+        <div class="date-wrapper">
+            <input id="dateRange" type="text" class="date-input" placeholder="التاريخ">
+             
+            <i class="fa-regular fa-calendar input-icon"></i>
+        </div>
     </div>
-  </div>
+
+    <div class="left-search">
+        <div class="search-box">
+            <input type="text" placeholder="ابحث باسم المنتج...">
+            <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+    </div>
 </div>
 </div>
 <div class="status-filter">
@@ -233,151 +598,173 @@
 
     <!-- Table -->
     <div class="table-box">
-       <table class="orders-table" 
-    <thead>
-        <tr>
-            <th>إجراء</th>
-            <th>الحالة الطلب</th>
-            <th>الحالة الدفع</th>
-            <th>المبلغ</th>
-            <th>الدفع</th>
-            <th>التاريخ</th>
-            <th>العميل</th>
-            <th>اسم المنتج</th>
-            <th>رقم الطلب</th>
-            <th></th>
-        </tr>
-    </thead>
+       <table class="orders-table" >
+   <thead>
+  <tr>
+       <th>إجراء</th>
+                <th>حالة الطلب</th>
+                <th>حالة الدفع</th>
+                <th>المبلغ</th>
+                <th class="hide-mobile">الدفع</th>
+                <th class="hide-mobile">التاريخ</th>
+                <th>العميل</th>
+                <th>اسم المنتج</th>
+                <th>رقم الطلب</th>
+                <th></th>
+</tr>
+</thead>
 
-    <tbody>
+<tbody>
+                <tr>
+                    <td>⋯</td>
+                    <td><span class="status delivered">تم التوصيل</span></td>
+                    <td><span class="status paid">تم الدفع</span></td>
+                    <td>299.00 ﷼</td>
+                    <td class="hide-mobile">ماستركارد</td>
+                    <td class="hide-mobile">29\10\2025</td>
+                    <td>أحمد خليل</td>
+                    <td class="product">
+                        <a href="كل طلب.html" class="product-link">
+                            ساعة ذكية برو إكس<br>
+                            <small>منتج 2</small>
+                        </a>
+                    </td>
+                    <td>#10248</td>
+                    <td><input type="checkbox"></td>
+                </tr>
 
-        <!-- الصف 1 -->
-        <tr>
-            <td>⋯</td>
-            <td><span class="status delivered">تم التوصيل</span></td>
-            <td><span class="status paid">تم الدفع</span></td>
-            <td>299.00 ﷼</td>
-            <td>ماستركارد</td>
-            <td>29\10\2025</td>
-            <td>أحمد خليل</td>
-            <td class="product">
-                  <a href="كل طلب.html" class="product-link">
-        ساعة ذكية برو إكس<br>
-        <small>منتج 2</small>
-    </a>
-            </td>
-            <td>#10248</td>
-            <td><input type="checkbox"></td>
-        </tr>
+                <tr>
+                    <td>⋯</td>
+                    <td><span class="status processing">قيد التنفيذ</span></td>
+                    <td><span class="status pending">معلق</span></td>
+                    <td>299.00 ﷼</td>
+                    <td class="hide-mobile">فيزا</td>
+                    <td class="hide-mobile">29\10\2025</td>
+                    <td>عرفات حسين</td>
+                    <td class="product">
+                        كرسي مكتب فاخر<br>
+                        <small>منتج 1</small>
+                    </td>
+                    <td>#10246</td>
+                    <td><input type="checkbox"></td>
+                </tr>
 
-        <!-- الصف 2 -->
-        <tr>
-            <td>⋯</td>
-            <td><span class="status processing">قيد التنفيذ</span></td>
-            <td><span class="status pending">معلق</span></td>
-            <td>299.00 ﷼</td>
-            <td>فيزا</td>
-            <td>29\10\2025</td>
-            <td>عرفات حسين</td>
-            <td class="product">
-                كرسي مكتب فاخر<br>
-                <small>منتج 1</small>
-            </td>
-            <td>#10246</td>
-            <td><input type="checkbox"></td>
-        </tr>
+                <tr>
+                    <td>⋯</td>
+                    <td><span class="status delivered">تم التوصيل</span></td>
+                    <td><span class="status paid">تم الدفع</span></td>
+                    <td>299.00 ﷼</td>
+                    <td class="hide-mobile">باي بال</td>
+                    <td class="hide-mobile">29\10\2025</td>
+                    <td>نصرت جهان</td>
+                    <td class="product">
+                        حامل لابتوب مريح<br>
+                        <small>منتج 1</small>
+                    </td>
+                    <td>#10247</td>
+                    <td><input type="checkbox"></td>
+                </tr>
 
-        <!-- الصف 3 -->
-        <tr>
-            <td>⋯</td>
-            <td><span class="status delivered">تم التوصيل</span></td>
-            <td><span class="status paid">تم الدفع</span></td>
-            <td>299.00 ﷼</td>
-            <td>باي بال</td>
-            <td>29\10\2025</td>
-            <td>نصرت جهان</td>
-            <td class="product">
-                حامل لابتوب مريح<br>
-                <small>منتج 1</small>
-            </td>
-            <td>#10247</td>
-            <td><input type="checkbox"></td>
-        </tr>
+                <tr>
+                    <td>⋯</td>
+                    <td><span class="status canceled">ملغي</span></td>
+                    <td><span class="status notpaid">غير مدفوع</span></td>
+                    <td>299.00 ﷼</td>
+                    <td class="hide-mobile">ماستركارد</td>
+                    <td class="hide-mobile">29\10\2025</td>
+                    <td>تاتيا أكثر</td>
+                    <td class="product">
+                        سماعات أذن لاسلكية ماكس<br>
+                        <small>منتج 2</small>
+                    </td>
+                    <td>#10245</td>
+                    <td><input type="checkbox"></td>
+                </tr>
 
-        <!-- الصف 4 -->
-        <tr>
-            <td>⋯</td>
-            <td><span class="status canceled">ملغي</span></td>
-            <td><span class="status notpaid">غير مدفوع</span></td>
-            <td>299.00 ﷼</td>
-            <td>ماستركارد</td>
-            <td>29\10\2025</td>
-            <td>تاتيا أكثر</td>
-            <td class="product">
-                سماعات أذن لاسلكية ماكس<br>
-                <small>منتج 2</small>
-            </td>
-            <td>#10245</td>
-            <td><input type="checkbox"></td>
-        </tr>
+                <tr>
+                    <td>⋯</td>
+                    <td><span class="status processing">قيد التنفيذ</span></td>
+                    <td><span class="status pending">معلق</span></td>
+                    <td>299.00 ﷼</td>
+                    <td class="hide-mobile">فيزا</td>
+                    <td class="hide-mobile">29\10\2025</td>
+                    <td>عرفات حسين</td>
+                    <td class="product">
+                        كرسي مكتب فاخر<br>
+                        <small>منتج 1</small>
+                    </td>
+                    <td>#10246</td>
+                    <td><input type="checkbox"></td>
+                </tr>
 
-        <!-- الصف 5 (نفس صف 2) -->
-        <tr>
-            <td>⋯</td>
-            <td><span class="status processing">قيد التنفيذ</span></td>
-            <td><span class="status pending">معلق</span></td>
-            <td>299.00 ﷼</td>
-            <td>فيزا</td>
-            <td>29\10\2025</td>
-            <td>عرفات حسين</td>
-            <td class="product">
-                كرسي مكتب فاخر<br>
-                <small>منتج 1</small>
-            </td>
-            <td>#10246</td>
-            <td><input type="checkbox"></td>
-        </tr>
+                <tr>
+                    <td>⋯</td>
+                    <td><span class="status delivered">تم التوصيل</span></td>
+                    <td><span class="status paid">تم الدفع</span></td>
+                    <td>299.00 ﷼</td>
+                    <td class="hide-mobile">باي بال</td>
+                    <td class="hide-mobile">29\10\2025</td>
+                    <td>نصرت جهان</td>
+                    <td class="product">
+                        حامل لابتوب مريح<br>
+                        <small>منتج 1</small>
+                    </td>
+                    <td>#10247</td>
+                    <td><input type="checkbox"></td>
+                </tr>
 
-        <!-- الصف 6 -->
-        <tr>
-            <td>⋯</td>
-            <td><span class="status delivered">تم التوصيل</span></td>
-            <td><span class="status paid">تم الدفع</span></td>
-            <td>299.00 ﷼</td>
-            <td>باي بال</td>
-            <td>29\10\2025</td>
-            <td>نصرت جهان</td>
-            <td class="product">
-                حامل لابتوب مريح<br>
-                <small>منتج 1</small>
-            </td>
-            <td>#10247</td>
-            <td><input type="checkbox"></td>
-        </tr>
-
-        <!-- الصف 7 -->
-        <tr>
-            <td>⋯</td>
-            <td><span class="status canceled">ملغي</span></td>
-            <td><span class="status notpaid">غير مدفوع</span></td>
-            <td>299.00 ﷼</td>
-            <td>ماستركارد</td>
-            <td>29\10\2025</td>
-            <td>تاتيا أكثر</td>
-            <td class="product">
-                سماعات أذن لاسلكية ماكس<br>
-                <small>منتج 2</small>
-            </td>
-            <td>#10245</td>
-            <td><input type="checkbox"></td>
-        </tr>
-
-    </tbody>
+                <tr>
+                    <td>⋯</td>
+                    <td><span class="status canceled">ملغي</span></td>
+                    <td><span class="status notpaid">غير مدفوع</span></td>
+                    <td>299.00 ﷼</td>
+                    <td class="hide-mobile">ماستركارد</td>
+                    <td class="hide-mobile">29\10\2025</td>
+                    <td>تاتيا أكثر</td>
+                    <td class="product">
+                        سماعات أذن لاسلكية ماكس<br>
+                        <small>منتج 2</small>
+                    </td>
+                    <td>#10245</td>
+                    <td><input type="checkbox"></td>
+                </tr>
+            </tbody>
+        </table>
 </table>
 
     </div>
-</div>
+
 </main>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    
+    // 1. تفعيل اختيار التاريخ (Flatpickr)
+    flatpickr("#dateRange", {
+        mode: "range",          // وضع اختيار فترة (من - إلى)
+        dateFormat: "Y-m-d",    // صيغة التاريخ
+        locale: "ar",           // اللغة العربية (إذا كانت المكتبة تدعمها لديك)
+        direction: "rtl"        // اتجاه اليمين لليسار
+    });
+
+    // 2. تفعيل قائمة "المنتج"
+    const productBtn = document.getElementById("productFilterBtn");
+    const productMenu = document.getElementById("productFilterMenu");
+
+    if (productBtn && productMenu) {
+        productBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            productMenu.classList.toggle("show");
+        });
+
+        // إغلاق القائمة عند الضغط في الخارج
+        document.addEventListener("click", function (e) {
+            if (!productBtn.contains(e.target) && !productMenu.contains(e.target)) {
+                productMenu.classList.remove("show");
+            }
+        });
+    }
+});
+</script>
 <script src="/assests/js/الطلبات.js">
 </script>
 <script src="/assests/js/home.js"></script>
