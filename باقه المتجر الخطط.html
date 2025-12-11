@@ -8,7 +8,170 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="assests/responsive.css">
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  @media (max-width: 992px) {
+    main.content {
+        margin-left: 200px;
+        padding: 15px;
+    }
 
+    .plans-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .sidebar {
+        width: 200px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .sidebar {
+        position: fixed;
+        left: -100%;
+        z-index: 1000;
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+
+    main.content {
+        margin-left: 0;
+        padding: 10px;
+    }
+
+    .plans-modal {
+        width: 95%;
+        padding: 15px;
+          overflow-y: auto;
+    }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+    .topbar .center-section {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .plans-container {
+        flex-direction: column;
+    }
+
+    .plan {
+        width: 100%;
+    }
+}
+
+/* Overlay خلفية */
+.plans-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5); /* يخفي الخلفية */
+    display: none; /* يظهر عند الفتح */
+    justify-content: flex-start; /* يبدأ من أعلى */
+
+    overflow-y: auto; /* يسمح بالـ scroll للـ popup كامل */
+    z-index: 1000;
+}
+/* Overlay خلفية */
+.plans-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: none; /* يظهر عند الفتح */
+    justify-content: center; /* توسيط أفقياً */
+    align-items: flex-start; /* يبدأ من أعلى */
+    padding: 20px;
+    overflow: hidden; /* منع scroll للصفحة */
+    z-index: 1000;
+}
+
+/* Popup */
+.plans-modal {
+    background-color: #fff;
+    width: 90%; /* نسبة من الشاشة */
+
+    max-height: 90vh; /* ارتفاع محدود بالنسبة للشاشة */
+    overflow-y: auto; /* scroll داخلي */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    margin: 0 auto;
+}
+
+/* Scrollbar جميل */
+.plans-modal::-webkit-scrollbar {
+    width: 8px;
+}
+
+.plans-modal::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+
+/* Responsive للشاشات الصغيرة */
+@media (max-width: 1200px) {
+    .plans-modal {
+        width: 95%;
+
+    }
+}
+
+@media (max-width: 768px) {
+    .plans-modal {
+        width: 98%;
+    
+        padding: 15px;
+    }
+}
+
+/* Popup */
+.plans-modal {
+    margin: 0 auto; /* توسيط أفقياً */
+    background-color: #fff;
+    width: 90%;
+    max-width: 1000px;
+    min-height: 400px;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+/* Scrollbar جميل */
+.plans-overlay::-webkit-scrollbar {
+    width: 8px;
+}
+
+.plans-overlay::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .plans-overlay {
+        padding-top: 20px;
+    }
+    .plans-modal {
+        width: 95%;
+    }
+}
+
+</style>
 </head>
 
 <body>
@@ -16,7 +179,7 @@
 <div id="plansPopup" class="plans-overlay">
   <div class="plans-modal">
  <div class="plan-space">
-    
+
     <h2>
         <span class="back-btn" onclick="goBack()">
        <a href="باقه المتجر.html" class="icon-link">
@@ -70,7 +233,7 @@
         <div class="price">100 <img class="rl" src="/image/Saudi_Riyal_Symbol.svg.png"> شهرياً</div>
 <h4>المميزات:</h4>
         <ul>
-          
+
           <li>منتجات لا محدودة<i class="fa-regular fa-circle-check"></i></li>
 
           <li>طلبات لا محدودة<i class="fa-regular fa-circle-check"></i></li>
@@ -84,14 +247,14 @@
           <li>cj dropshipping إضافة<i class="fa-regular fa-circle-check"></i></li>
           <li>تطبيقات التسويقه<i class="fa-regular fa-circle-check"></i></li>
 
-        
+
 
         </ul>
 
         <button class="subscribe-btn">اشترك الآن</button>
       </div>
 
-    
+
       <div class="plan pro">
         <h3>الباقة المتقدمة</h3>
         <div class="price">200 <img class="rl" src="/image/Saudi_Riyal_Symbol.svg.png"> شهرياً</div>
@@ -174,7 +337,6 @@
     <div class="buttons">
         <button class="visit-btn">زيارة المتجر</button>
           <a href="الاعدادات.html" class="settings-btn">الإعدادات ⚙️</a>
-
     </div>
 
     <ul class="menu-list">
@@ -224,9 +386,9 @@
 
        <li class="has-submenu">
     <div class="menu-item">
-      
+
             <span class="icon"><i class="fa-solid fa-shop"></i></span> المنتجات
-       
+
         <span class="arrow"><i class="fa-solid fa-angle-down"></i></span>
     </div>
 
@@ -309,7 +471,7 @@
   <div class="title-wrapper">
     <h2 class="title">المحفظه والفواتير<p class="sm">تابع فواتير متجرك</p></h2>
     <br>
-    
+
            <button class="statement-btn">📑 كشف الحساب</button>
 
 
@@ -317,16 +479,16 @@
     </div>
 
 
-      
+
 
     <!-- ===== Main ===== -->
-   
+
       <!-- Panel: سحب الأرباح + بطاقة -->
       <section class="panel">
         <div class="top-row">
           <div class="wallet-container">
 
-  <!-- الفورم على اليسار --> 
+  <!-- الفورم على اليسار -->
    <div class="card-box">
 
   <div class="black-card">
@@ -344,15 +506,15 @@
   </div>
   </div>
   <div class="withdraw-box">
-  
+
     <div class="withdraw-card">
       <h2>سحب الأرباح</h2>
 
       <div class="tabs">
-        <div class="tab active">حساب بنكي</div> 
+        <div class="tab active">حساب بنكي</div>
         <div class="tab">STC Pay</div>
         <div class="tab">Apple pay</div>
-        
+
       </div>
 
       <label>Card Number</label>
@@ -382,16 +544,16 @@
   </div>
 
   <!-- الكارت الأسود على اليمين -->
- 
+
 
 </div>
 
-         
-       
+
+
 
         <hr style="border:none;height:12px;background:transparent;margin:16px 0" />
 
-    
+
         <div>
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
             <div style="font-weight:700">الفواتير</div>
@@ -400,16 +562,16 @@
           </div>
 
           <div class="invoices" id="invoices">
-         
+
           </div>
         </div>
       </section>
-    
-     
+
+
 </main>
 
 </div>
-   
+
 
 
 
